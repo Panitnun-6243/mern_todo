@@ -1,0 +1,142 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  font-size: 67%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-contents {
+  background-color: hsl(220, 13%, 18%);
+  min-height: 100vh;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  padding-top: 4rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 8rem 1.6fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "button-back . button-new"
+    "contents contents contents";
+}
+
+.button,
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  height: 4rem;
+  width: 24rem;
+}
+
+.button {
+  display: flex;
+  margin: 0;
+}
+
+.button-back,
+.button-new {
+  width: 8rem;
+}
+
+.button-back {
+  grid-area: button-back;
+}
+
+.button-new {
+  grid-area: button-new;
+  display: flex;
+  justify-self: end;
+}
+
+.contents {
+  grid-area: contents;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 80vh;
+
+  h1 {
+    margin-bottom: 4rem;
+    color: #61dafb;
+    font-size: 50px;
+  }
+}
+
+.list-container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  li {
+    background-color: #494c54;
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 2rem;
+
+    min-height: 20rem;
+    height: max-content;
+    width: 24rem !important;
+
+    margin: 0 auto 2rem;
+
+    .title-description {
+      text-align: left;
+
+      div {
+        text-transform: capitalize;
+        margin-bottom: 1rem;
+        color: #61dafb;
+        font-weight: 600;
+      }
+      p {
+        font-size: 18px;
+        color: whitesmoke;
+        font-weight: 600;
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        &:first-of-type {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}
