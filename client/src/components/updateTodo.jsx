@@ -3,7 +3,7 @@ import axios from "axios";
 
 import React from "react";
 
-export default function UpdateTodo({ _id, title, description }) {
+export default function UpdateTodo({ _id, handleClose, handleUpdate }) {
   const [data, setData] = useState({ title: "", description: "" });
 
   function handleChange(e) {
@@ -12,7 +12,7 @@ export default function UpdateTodo({ _id, title, description }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({ id }, { data });
+    console.log({ _id }, { data });
 
     axios
       .put(`http://localhost:8000/api/todo/${_id}`, data)
@@ -27,11 +27,12 @@ export default function UpdateTodo({ _id, title, description }) {
   }
 
   return (
+    //handle close กับ handle update จะถูกใช้งานเมื่อทำการ submit form
     <form
       className="form-container"
       onSubmit={(e) => {
         handleSubmit(e);
-        handleEdited();
+        handleUpdate();
         handleClose();
       }}
     >
