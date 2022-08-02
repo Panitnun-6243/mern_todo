@@ -1,11 +1,19 @@
 import "./App.scss";
 import CreateTodo from "./components/createTodo";
 import ShowTodoList from "./components/showTodoList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="app-contents">
-      <CreateTodo />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<ShowTodoList />}/>
+          <Route path="create-todo" element={<CreateTodo />}/>
+        </Routes>
+      </BrowserRouter>
+      
+      
     </div>
   );
 }

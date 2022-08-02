@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import React from "react";
+import {Link} from "react-router-dom"
 
 export default function CreateTodo() {
   const [data, setData] = useState({
@@ -35,7 +36,7 @@ export default function CreateTodo() {
 
   return (
     <section className="container">
-            
+    
             <section className="contents">
                 <h1>Create Todo</h1>
                 <form
@@ -67,7 +68,13 @@ export default function CreateTodo() {
                         create todo
                     </button>
                 </form>
+                <Link to="/" className="button-back">
+                <button type="button" className="button-back-button">
+                    back
+                </button>
+            </Link>
             </section>
+            
         </section>
   );
 }
