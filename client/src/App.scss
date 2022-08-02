@@ -192,3 +192,47 @@ button {
     margin-bottom: 2rem;
   }
 }
+.update-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .update-contents {
+      display: grid;
+      grid-template-areas:
+          "close"
+          "form";
+
+      background-color: hsl(220, 13%, 28%);
+
+      padding: 2rem 4rem 4rem;
+
+      border-radius: 0.5rem;
+
+      .close {
+          grid-area: close;
+          color: white;
+          font-weight: 700;
+
+          display: flex;
+          justify-content: flex-end;
+
+          margin-bottom: 4rem;
+
+          cursor: pointer;
+      }
+
+      .contents {
+          grid-area: form;
+      }
+  }
+}
