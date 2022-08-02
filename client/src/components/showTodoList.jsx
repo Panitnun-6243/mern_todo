@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TodoCard({ data }) {
+function TodoCard({ data, handleDelete }) {
   const { _id, title, description } = data;
   return (
     <li key={_id}>
@@ -13,7 +13,9 @@ function TodoCard({ data }) {
       </div>
       <div className="button-container">
         <button className="button">edit</button>
-        <button className="button">delete</button>
+        <button className="button" onClick={handleDelete}>
+          delete
+        </button>
       </div>
     </li>
   );
@@ -33,18 +35,35 @@ export default function ShowTodoList() {
       });
   }, []);
 
+  function handleDelete(e) {
+    axios.delete(`http://localhost:8000/api/todo/${e.target.name}`);
+
+    setTodo((data) => {
+      return data.filter((todo) => todo._id !== e.target.name);
+    });
+  }
+
   return (
     <section className="container">
       <section className="contents">
-        
         <h1>Todo List</h1>
-        <div style={{marginBottom:"2rem", width:"100%", display:"flex", justifyContent:"flex-start", paddingLeft:"24px"}}><Link to="/create-todo" className="button-new">
-          <button className="button">Create new todo</button>
-        </Link></div>
-        
+        <div
+          style={{
+            marginBottom: "2rem",
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-start",
+            paddingLeft: "24px",
+          }}
+        >
+          <Link to="/create-todo" className="button-new">
+            <button className="button">Create new todo</button>
+          </Link>
+        </div>
+
         <ul className="list-container">
           {todo.map((data) => (
-            <TodoCard data={data} />
+            <TodoCard data={data} handleDelete={handleDelete} />
           ))}
         </ul>
       </section>
